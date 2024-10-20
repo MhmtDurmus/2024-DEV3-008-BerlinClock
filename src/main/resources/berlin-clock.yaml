@@ -1,0 +1,51 @@
+openapi: 3.0.0
+info:
+  title: Berlin Clock API
+  description: API to get the Berlin Clock representation of the current time.
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+    description: Local development
+paths:
+  /berlinClock:
+    get:
+      summary: Get Berlin Clock time
+      description: Returns the current time represented as a Berlin Clock.
+      operationId: getBerlinClock
+      responses:
+        '200':
+          description: A successful response with the Berlin Clock time.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BerlinClockPayload'
+        '400':
+          description: Invalid request
+        '500':
+          description: Server error
+components:
+  schemas:
+    BerlinClockPayload:
+      type: object
+      properties:
+        seconds:
+          type: string
+          description: The seconds row of the Berlin Clock.
+        fiveHourRow:
+          type: string
+          description: The row representing 5-hour blocks.
+        oneHourRow:
+          type: string
+          description: The row representing 1-hour blocks.
+        fiveMinuteRow:
+          type: string
+          description: The row representing 5-minute blocks.
+        oneMinuteRow:
+          type: string
+          description: The row representing 1-minute blocks.
+      example:
+        seconds: "Y"
+        fiveHourRow: "RROO"
+        oneHourRow: "RRRO"
+        fiveMinuteRow: "YYRYYROOOOO"
+        oneMinuteRow: "YYOO"
