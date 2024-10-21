@@ -1,4 +1,4 @@
-package be.soprasteria.berlinclock;
+package be.soprasteria.berlinclock.service;
 
 import org.springframework.stereotype.Service;
 

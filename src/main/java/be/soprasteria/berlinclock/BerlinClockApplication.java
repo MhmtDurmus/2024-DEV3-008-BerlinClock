@@ -11,5 +11,4 @@ public class BerlinClockApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BerlinClockApplication.class, args);
 	}
-
 }

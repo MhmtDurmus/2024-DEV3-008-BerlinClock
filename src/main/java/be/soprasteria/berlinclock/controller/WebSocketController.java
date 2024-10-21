@@ -1,5 +1,7 @@
-package be.soprasteria.berlinclock;
+package be.soprasteria.berlinclock.controller;
 
+import be.soprasteria.berlinclock.model.BerlinClockResponse;
+import be.soprasteria.berlinclock.service.BerlinClockService;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.RestController;

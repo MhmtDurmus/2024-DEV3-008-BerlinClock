@@ -1,4 +1,4 @@
-package be.soprasteria.berlinclock;
+package be.soprasteria.berlinclock.model;
 
 public record BerlinClockResponse(
         String secondsLamp,

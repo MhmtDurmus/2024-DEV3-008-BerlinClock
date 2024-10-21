@@ -1,5 +1,6 @@
 package be.soprasteria.berlinclock;
 
+import be.soprasteria.berlinclock.service.BerlinClockService;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalTime;
