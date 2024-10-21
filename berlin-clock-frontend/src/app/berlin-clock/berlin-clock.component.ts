@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { WebsocketService } from '../websocket/websocket.service';
+
 
 @Component({
   selector: 'app-berlin-clock',
@@ -10,17 +11,11 @@ import {HttpClient} from '@angular/common/http';
 })
 export class BerlinClockComponent {
 
-  timeData: any;  // Variable to hold time data
+  timeData: any;
 
-  constructor(private http: HttpClient) {}
-
-  ngOnInit(): void {
-    this.getBerlinClockTime();
+  constructor(private websocketService: WebsocketService) {
+    this.websocketService.getBerlinClockUpdates().subscribe((data) => {
+      this.timeData = data
+    });
   }
-
-  getBerlinClockTime(): void {
-    this.http.get('http://localhost:8080/api/berlinclock')  // Call your backend API
-      .subscribe((data) => {
-        this.timeData = data;
-      });
-  }}
+}
