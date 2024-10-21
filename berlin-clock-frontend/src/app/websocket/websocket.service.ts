@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Client } from '@stomp/stompjs';
+import {Injectable} from '@angular/core';
+import {Client} from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
-import { Observable, Subject } from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,6 @@ export class WebsocketService {
         console.log('Connected: ' + frame);
         this.stompClient.subscribe('/topic/clock', (message) => {
           if (message.body) {
-            console.log(message)
             this.berlinClockSubject.next(JSON.parse(message.body));
           }
         });

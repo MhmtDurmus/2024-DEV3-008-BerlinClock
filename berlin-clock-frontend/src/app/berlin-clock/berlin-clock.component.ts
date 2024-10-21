@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import { WebsocketService } from '../websocket/websocket.service';
+import {Component} from '@angular/core';
+import {WebsocketService} from '../websocket/websocket.service';
 
 
 @Component({
@@ -15,6 +15,7 @@ export class BerlinClockComponent {
 
   constructor(private websocketService: WebsocketService) {
     this.websocketService.getBerlinClockUpdates().subscribe((data) => {
+      console.log(data)
       this.timeData = data
     });
   }
