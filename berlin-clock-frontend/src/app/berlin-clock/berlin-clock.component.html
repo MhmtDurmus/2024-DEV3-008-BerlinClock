@@ -1,10 +1,20 @@
 <div class="berlin-clock">
   <!-- Display the visual blocks of the clock  -->
-  <div class="seconds-lamp">{{ timeData?.secondsLamp }}</div>
-  <div class="hours-lamps">{{ timeData?.fiveHoursLamp }}</div>
-  <div class="single-hours-lamps">{{ timeData?.hoursLamp }}</div>
-  <div class="minutes-lamps">{{ timeData?.fiveMinutesLamp }}</div>
-  <div class="single-minutes-lamps">{{ timeData?.minutesLamp }}</div>
+  <div class="seconds-lamp" [ngClass]="timeData?.secondsLamp === 'Y' ? 'yellow' : 'off'"></div>
+
+  <div class="hours-lamps">
+    <div *ngFor="let lamp of getLamps(timeData?.fiveHoursLamp, 'R', 4)" [ngClass]="lamp"></div>
+  </div>
+  <div class="single-hours-lamps">
+    <div *ngFor="let lamp of getLamps(timeData?.hoursLamp, 'R', 4)" [ngClass]="lamp"></div>
+  </div>
+  <div class="minutes-lamps">
+    <div *ngFor="let lamp of getLamps(timeData?.fiveMinutesLamp, 'YR', 11)" [ngClass]="lamp"></div>
+  </div>
+  <div class="single-minutes-lamps">
+    <div *ngFor="let lamp of getLamps(timeData?.minutesLamp, 'Y', 4)" [ngClass]="lamp"></div>
+  </div>
+
   <div class="digital-time">{{ currentTime }}</div>
 
 </div>
