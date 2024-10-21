@@ -16,6 +16,23 @@ public class BerlinClock {
         return getLamps(lampsOn, 4, "R");
     }
 
+    public String getFiveMinuteRow(int minutes) {
+        int lampsOn = minutes / 5;
+        StringBuilder row = new StringBuilder();
+        for (int i = 0; i < 11; i++) {
+            if (i < lampsOn) {
+                row.append((i + 1) % 3 == 0 ? "R" : "Y");
+            } else {
+                row.append("O");
+            }
+        }
+        return row.toString();
+    }
+
+    public String getSingleMinuteRow(int minutes) {
+        int lampsOn = minutes % 5;
+        return getLamps(lampsOn, 4, "Y");
+    }
 
     private String getLamps(int lampsOn, int totalLamps, String onSymbol) {
         StringBuilder row = new StringBuilder();

@@ -41,4 +41,23 @@ class BerlinClockApplicationTests {
         assertEquals("RRRR", clock.getSingleHourRow(4));  // 4 additional hours
     }
 
+    @Test
+    void testFiveMinuteBlocks() {
+        BerlinClock clock = new BerlinClock();
+        assertEquals("OOOOOOOOOOO", clock.getFiveMinuteRow(0));   // 0 minutes
+        assertEquals("YYROOOOOOOO", clock.getFiveMinuteRow(15));  // 15 minutes, 3rd block is red
+        assertEquals("YYRYOOOOOOO", clock.getFiveMinuteRow(20));  // 20 minutes
+        assertEquals("YYRYYOOOOOO", clock.getFiveMinuteRow(25));  // 25 minutes
+        assertEquals("YYRYYROOOOO", clock.getFiveMinuteRow(30));  // 30 minutes, 6th block is red
+        assertEquals("YYRYYRYOOOO", clock.getFiveMinuteRow(36));  // 36 minutes
+        assertEquals("YYRYYRYYOOO", clock.getFiveMinuteRow(40));  // 35 minutes
+    }
+
+    @Test
+    void testSingleMinuteBlocks() {
+        BerlinClock clock = new BerlinClock();
+        assertEquals("OOOO", clock.getSingleMinuteRow(0));  // 0 additional minutes
+        assertEquals("YOOO", clock.getSingleMinuteRow(1));  // 1 additional minute
+        assertEquals("YYYY", clock.getSingleMinuteRow(4));  // 4 additional minutes
+    }
 }
