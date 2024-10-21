@@ -34,7 +34,6 @@ public class WebSocketController {
                 berlinClockService.getSingleHourLamp(hours),
                 berlinClockService.getFiveHourLamp(hours)
         );
-
         messagingTemplate.convertAndSend("/topic/clock", response);
     }
 }
