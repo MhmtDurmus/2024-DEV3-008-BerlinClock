@@ -1,7 +1,10 @@
 package be.soprasteria.berlinclock;
 
+import org.springframework.stereotype.Service;
+
 import java.time.LocalTime;
 
+@Service
 public class BerlinClockService {
 
     public String displayBerlinClock(LocalTime time) {
@@ -10,27 +13,27 @@ public class BerlinClockService {
         int seconds = time.getSecond();
 
         return getSecondsLamp(seconds) + "\n" +
-                getFiveHourRow(hours) + "\n" +
-                getSingleHourRow(hours) + "\n" +
-                getFiveMinuteRow(minutes) + "\n" +
-                getSingleMinuteRow(minutes);
+                getFiveHourLamp(hours) + "\n" +
+                getSingleHourLamp(hours) + "\n" +
+                getFiveMinuteLamp(minutes) + "\n" +
+                getSingleMinuteLamp(minutes);
     }
 
     public String getSecondsLamp(int seconds) {
         return (seconds % 2 == 0) ? "Y" : "O";
     }
 
-    public String getFiveHourRow(int hours) {
+    public String getFiveHourLamp(int hours) {
         int lampsOn = hours / 5;
         return getLamps(lampsOn, "R");
     }
 
-    public String getSingleHourRow(int hours) {
+    public String getSingleHourLamp(int hours) {
         int lampsOn = hours % 5;
         return getLamps(lampsOn, "R");
     }
 
-    public String getFiveMinuteRow(int minutes) {
+    public String getFiveMinuteLamp(int minutes) {
         int lampsOn = minutes / 5;
         StringBuilder row = new StringBuilder();
         for (int i = 0; i < 11; i++) {
@@ -43,7 +46,7 @@ public class BerlinClockService {
         return row.toString();
     }
 
-    public String getSingleMinuteRow(int minutes) {
+    public String getSingleMinuteLamp(int minutes) {
         int lampsOn = minutes % 5;
         return getLamps(lampsOn, "Y");
     }
