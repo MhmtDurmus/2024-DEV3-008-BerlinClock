@@ -2,7 +2,7 @@ package be.soprasteria.berlinclock;
 
 import java.time.LocalTime;
 
-public class BerlinClock {
+public class BerlinClockService {
 
     public String displayBerlinClock(LocalTime time) {
         int hours = time.getHour();

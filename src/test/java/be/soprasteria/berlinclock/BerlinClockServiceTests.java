@@ -1,18 +1,17 @@
 package be.soprasteria.berlinclock;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
-class BerlinClockApplicationTests {
+
+class BerlinClockServiceTests {
 
     @Test
     void testEvenSecondsShouldTurnOnLamp() {
-        BerlinClock clock = new BerlinClock();
+        BerlinClockService clock = new BerlinClockService();
         assertEquals("Y", clock.getSecondsLamp(0));
         assertEquals("Y", clock.getSecondsLamp(2));
         assertEquals("Y", clock.getSecondsLamp(58));
@@ -20,7 +19,7 @@ class BerlinClockApplicationTests {
 
     @Test
     void testOddSecondsShouldTurnOffLamp() {
-        BerlinClock clock = new BerlinClock();
+        BerlinClockService clock = new BerlinClockService();
         assertEquals("O", clock.getSecondsLamp(1));
         assertEquals("O", clock.getSecondsLamp(3));
         assertEquals("O", clock.getSecondsLamp(59));
@@ -28,7 +27,7 @@ class BerlinClockApplicationTests {
 
     @Test
     void testFiveHourBlocks() {
-        BerlinClock clock = new BerlinClock();
+        BerlinClockService clock = new BerlinClockService();
         assertEquals("OOOO", clock.getFiveHourRow(0));  // 0 hours, no lights
         assertEquals("ROOO", clock.getFiveHourRow(5));  // 5 hours, 1 light
         assertEquals("RROO", clock.getFiveHourRow(10)); // 10 hours, 2 lights
@@ -37,7 +36,7 @@ class BerlinClockApplicationTests {
 
     @Test
     void testSingleHourBlocks() {
-        BerlinClock clock = new BerlinClock();
+        BerlinClockService clock = new BerlinClockService();
         assertEquals("OOOO", clock.getSingleHourRow(0));  // 0 additional hours
         assertEquals("ROOO", clock.getSingleHourRow(1));  // 1 additional hour
         assertEquals("RRRR", clock.getSingleHourRow(4));  // 4 additional hours
@@ -45,7 +44,7 @@ class BerlinClockApplicationTests {
 
     @Test
     void testFiveMinuteBlocks() {
-        BerlinClock clock = new BerlinClock();
+        BerlinClockService clock = new BerlinClockService();
         assertEquals("OOOOOOOOOOO", clock.getFiveMinuteRow(0));   // 0 minutes
         assertEquals("YYROOOOOOOO", clock.getFiveMinuteRow(15));  // 15 minutes, 3rd block is red
         assertEquals("YYRYOOOOOOO", clock.getFiveMinuteRow(20));  // 20 minutes
@@ -57,7 +56,7 @@ class BerlinClockApplicationTests {
 
     @Test
     void testSingleMinuteBlocks() {
-        BerlinClock clock = new BerlinClock();
+        BerlinClockService clock = new BerlinClockService();
         assertEquals("OOOO", clock.getSingleMinuteRow(0));  // 0 additional minutes
         assertEquals("YOOO", clock.getSingleMinuteRow(1));  // 1 additional minute
         assertEquals("YYYY", clock.getSingleMinuteRow(4));  // 4 additional minutes
@@ -65,7 +64,7 @@ class BerlinClockApplicationTests {
 
     @Test
     void testBerlinClockAt183500() {
-        BerlinClock clock = new BerlinClock();
+        BerlinClockService clock = new BerlinClockService();
         LocalTime time = LocalTime.of(18, 35, 0);
         var expected = """
                 Y
@@ -79,7 +78,7 @@ class BerlinClockApplicationTests {
 
     @Test
     void testBerlinClockAtMidnight() {
-        BerlinClock clock = new BerlinClock();
+        BerlinClockService clock = new BerlinClockService();
         LocalTime time = LocalTime.of(0, 0, 0);
         var expected = """
                 Y
@@ -93,7 +92,7 @@ class BerlinClockApplicationTests {
 
     @Test
     void testBerlinClockAtMaxTime() {
-        BerlinClock clock = new BerlinClock();
+        BerlinClockService clock = new BerlinClockService();
         LocalTime time = LocalTime.of(23, 59, 59);
         String expected = """
                 O
