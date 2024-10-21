@@ -33,4 +33,12 @@ class BerlinClockApplicationTests {
         assertEquals("RRRR", clock.getFiveHourRow(20)); // 20 hours, 4 lights
     }
 
+    @Test
+    void testSingleHourBlocks() {
+        BerlinClock clock = new BerlinClock();
+        assertEquals("OOOO", clock.getSingleHourRow(0));  // 0 additional hours
+        assertEquals("ROOO", clock.getSingleHourRow(1));  // 1 additional hour
+        assertEquals("RRRR", clock.getSingleHourRow(4));  // 4 additional hours
+    }
+
 }

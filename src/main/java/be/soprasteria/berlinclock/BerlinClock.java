@@ -11,6 +11,12 @@ public class BerlinClock {
         return getLamps(lampsOn, 4, "R");
     }
 
+    public String getSingleHourRow(int hours) {
+        int lampsOn = hours % 5;
+        return getLamps(lampsOn, 4, "R");
+    }
+
+
     private String getLamps(int lampsOn, int totalLamps, String onSymbol) {
         StringBuilder row = new StringBuilder();
         for (int i = 0; i < totalLamps; i++) {
