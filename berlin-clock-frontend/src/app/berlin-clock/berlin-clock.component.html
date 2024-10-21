@@ -1,20 +1,23 @@
-<div class="berlin-clock">
-  <!-- Display the visual blocks of the clock  -->
-  <div class="seconds-lamp" [ngClass]="timeData?.secondsLamp === 'Y' ? 'yellow' : 'off'"></div>
+<div class="parent-container">
+  <div class="berlin-clock">
+    <!-- Display the visual blocks of the clock  -->
+    <div class="seconds-lamp" [ngClass]="timeData?.secondsLamp === 'Y' ? 'yellow' : 'off'"></div>
 
-  <div class="hours-lamps">
-    <div *ngFor="let lamp of getLamps(timeData?.fiveHoursLamp, 'R', 4)" [ngClass]="lamp"></div>
-  </div>
-  <div class="single-hours-lamps">
-    <div *ngFor="let lamp of getLamps(timeData?.hoursLamp, 'R', 4)" [ngClass]="lamp"></div>
-  </div>
-  <div class="minutes-lamps">
-    <div *ngFor="let lamp of getLamps(timeData?.fiveMinutesLamp, 'YR', 11)" [ngClass]="lamp"></div>
-  </div>
-  <div class="single-minutes-lamps">
-    <div *ngFor="let lamp of getLamps(timeData?.minutesLamp, 'Y', 4)" [ngClass]="lamp"></div>
-  </div>
+    <div class="hours-lamps">
+      <div *ngFor="let lamp of getLamps(timeData?.fiveHoursLamp, 'YR', 4)" [ngClass]="lamp"></div>
+    </div>
+    <div class="single-hours-lamps">
+      <div *ngFor="let lamp of getLamps(timeData?.hoursLamp, 'YR', 4)" [ngClass]="lamp"></div>
+    </div>
+    <div class="minutes-lamps">
+      <div *ngFor="let lamp of getLamps(timeData?.fiveMinutesLamp, 'YR', 11)" [ngClass]="lamp"></div>
+    </div>
+    <div class="single-minutes-lamps">
+      <div *ngFor="let lamp of getLamps(timeData?.minutesLamp, 'Y', 4)" [ngClass]="lamp"></div>
+    </div>
 
-  <div class="digital-time">{{ currentTime }}</div>
+    <div class="digital-time">{{ currentTime }}</div>
 
+  </div>
 </div>
+

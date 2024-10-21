@@ -17,7 +17,6 @@ export class BerlinClockComponent {
 
   constructor(private websocketService: WebsocketService) {
     this.websocketService.getBerlinClockUpdates().subscribe((data) => {
-      console.log(data)
       this.timeData = data
       this.currentTime = this.getCurrentDigitalTime()
     });

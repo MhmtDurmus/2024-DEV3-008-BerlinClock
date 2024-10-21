@@ -5,6 +5,12 @@
   font-style: normal;
 }
 
+.parent-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 .berlin-clock {
   display: grid;
@@ -29,23 +35,29 @@
   .hours-lamps, .single-hours-lamps,
   .minutes-lamps, .single-minutes-lamps {
     display: grid;
-    gap: 10px;
+    gap: 5px;
 
     &.hours-lamps, &.single-hours-lamps {
-      grid-template-columns: repeat(4, 50px);
+      grid-template-columns: repeat(4, 100px);
     }
 
     &.minutes-lamps {
-      grid-template-columns: repeat(11, 50px);
+      gap: 4px;
+      grid-template-columns: repeat(11, 34px);
+
+      div {
+        width: 30px;
+      }
     }
 
     &.single-minutes-lamps {
-      grid-template-columns: repeat(4, 50px);
+      grid-template-columns: repeat(4, 100px);
     }
 
     div {
-      width: 50px;
+      width: 100px;
       height: 50px;
+      border: 1px solid gray;
       border-radius: 8px;
     }
 
