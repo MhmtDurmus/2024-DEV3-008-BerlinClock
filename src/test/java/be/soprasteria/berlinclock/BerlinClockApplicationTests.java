@@ -3,6 +3,8 @@ package be.soprasteria.berlinclock;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalTime;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
@@ -59,5 +61,19 @@ class BerlinClockApplicationTests {
         assertEquals("OOOO", clock.getSingleMinuteRow(0));  // 0 additional minutes
         assertEquals("YOOO", clock.getSingleMinuteRow(1));  // 1 additional minute
         assertEquals("YYYY", clock.getSingleMinuteRow(4));  // 4 additional minutes
+    }
+
+    @Test
+    void testBerlinClockAt183500() {
+        BerlinClock clock = new BerlinClock();
+        LocalTime time = LocalTime.of(18, 35, 0);
+        var expected = """
+                Y
+                RRRO
+                RRRO
+                YYRYYRYOOOO
+                OOOO""";
+
+        assertEquals(expected, clock.displayBerlinClock(time));
     }
 }
