@@ -76,4 +76,32 @@ class BerlinClockApplicationTests {
 
         assertEquals(expected, clock.displayBerlinClock(time));
     }
+
+    @Test
+    void testBerlinClockAtMidnight() {
+        BerlinClock clock = new BerlinClock();
+        LocalTime time = LocalTime.of(0, 0, 0);
+        var expected = """
+                Y
+                OOOO
+                OOOO
+                OOOOOOOOOOO
+                OOOO""";
+
+        assertEquals(expected, clock.displayBerlinClock(time));
+    }
+
+    @Test
+    void testBerlinClockAtMaxTime() {
+        BerlinClock clock = new BerlinClock();
+        LocalTime time = LocalTime.of(23, 59, 59);
+        String expected = """
+                O
+                RRRR
+                RRRO
+                YYRYYRYYRYY
+                YYYY""";
+
+        assertEquals(expected, clock.displayBerlinClock(time));
+    }
 }
