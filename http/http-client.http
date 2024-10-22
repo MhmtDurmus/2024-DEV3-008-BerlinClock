@@ -1,0 +1,8 @@
+### GET For retrieving string presentation of the time for berlinClock
+# "seconds": "Y",
+#  "fiveHourRow": "RROO",
+#  "oneHourRow": "RROO",
+#  "fiveMinuteRow": "OOOOOOOOOOO",
+#  "oneMinuteRow": "YYOO"
+# Y, R, O representing the color of the it, Yellow, Red, Off for lights of the berlin clock
+GET {{baseUrl}}/berlinClock
