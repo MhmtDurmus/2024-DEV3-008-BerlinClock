@@ -24,6 +24,14 @@ mvn spring-boot:run # to run the backend
 2. Install the dependencies:
 ````bash
 npm install
-ng serve
+ng serve -o
 ````
 Access the UI at http://localhost:4200.
+
+### Testing with http client
+
+Endpoint to Call: http://localhost:8080/berlinClock
+
+- You can use the http directory in the project to able to make GET request to server. (optional)
+- To be able to test the application, you should first start the backend and after wards you can create request
+- Server will respond to your request string representation of the currentTime.

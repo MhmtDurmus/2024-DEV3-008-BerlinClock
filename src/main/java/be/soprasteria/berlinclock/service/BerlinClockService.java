@@ -1,5 +1,6 @@
 package be.soprasteria.berlinclock.service;
 
+import be.soprasteria.berlinclock.model.BerlinClockResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
@@ -7,16 +8,18 @@ import java.time.LocalTime;
 @Service
 public class BerlinClockService {
 
-    public String displayBerlinClock(LocalTime time) {
+    public BerlinClockResponse displayBerlinClock(LocalTime time) {
         int hours = time.getHour();
         int minutes = time.getMinute();
         int seconds = time.getSecond();
 
-        return getSecondsLamp(seconds) + "\n" +
-                getFiveHourLamp(hours) + "\n" +
-                getSingleHourLamp(hours) + "\n" +
-                getFiveMinuteLamp(minutes) + "\n" +
-                getSingleMinuteLamp(minutes);
+        return new BerlinClockResponse(
+                getSecondsLamp(seconds),
+                getSingleMinuteLamp(minutes),
+                getFiveMinuteLamp(minutes),
+                getSingleHourLamp(hours),
+                getFiveHourLamp(hours)
+        );
     }
 
     public String getSecondsLamp(int seconds) {

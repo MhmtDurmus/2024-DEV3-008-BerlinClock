@@ -1,6 +1,5 @@
 package be.soprasteria.berlinclock.controller;
 
-import be.soprasteria.berlinclock.model.BerlinClockResponse;
 import be.soprasteria.berlinclock.service.BerlinClockService;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -20,20 +19,15 @@ public class WebSocketController {
         this.messagingTemplate = messagingTemplate;
     }
 
-    @Scheduled(fixedRate = 1000) // every second
-    public void sendBerlinClockUpdate() {
-        LocalTime currentTime = LocalTime.now();
-        int hours = currentTime.getHour();
-        int minutes = currentTime.getMinute();
-        int seconds = currentTime.getSecond();
+    public void sendBerlinClockUpdate(LocalTime currentTime) {
+        var response = berlinClockService.displayBerlinClock(currentTime);
 
-        var response = new BerlinClockResponse(
-                berlinClockService.getSecondsLamp(seconds),
-                berlinClockService.getSingleMinuteLamp(minutes),
-                berlinClockService.getFiveMinuteLamp(minutes),
-                berlinClockService.getSingleHourLamp(hours),
-                berlinClockService.getFiveHourLamp(hours)
-        );
         messagingTemplate.convertAndSend("/topic/clock", response);
     }
+
+    @Scheduled(fixedRate = 1000)
+    public void scheduledSendBerlinClockUpdate() {
+        sendBerlinClockUpdate(LocalTime.now());
+    }
+
 }
