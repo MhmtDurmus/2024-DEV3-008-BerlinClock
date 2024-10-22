@@ -4,5 +4,5 @@
 #  "oneHourRow": "RROO",
 #  "fiveMinuteRow": "OOOOOOOOOOO",
 #  "oneMinuteRow": "YYOO"
-# Y, R, O representing the color of the it, Yellow, Red, Off for lights of the berlin clock
+# Y, R, O representing the color of it, Yellow, Red, Off for lights of the berlin clock
 GET {{baseUrl}}/berlinClock
