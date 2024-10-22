@@ -31,6 +31,7 @@ export class BerlinClockComponent {
 
   getLamps(lamps: string, colorCodes: string, total: number) {
     const lampClasses = [];
+    lamps = lamps || '';
     for (let i = 0; i < total; i++) {
       lampClasses.push(i < lamps.length && lamps[i] === colorCodes[0] ? 'yellow' :
         (i < lamps.length && lamps[i] === colorCodes[1]) ? 'red' : 'off');
